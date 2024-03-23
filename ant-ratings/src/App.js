@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import Message from './Message.tsx';
 
 function App() {
+  
   var flask_url = "http://127.0.0.1:5000"
   fetch(flask_url + "/hello", {
   method: 'GET',
@@ -22,7 +24,12 @@ function App() {
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
-console.log("hello")
+  
+// class App extends Component {
+//   render () {
+//     return ""
+//   }
+// }
 
 
 
