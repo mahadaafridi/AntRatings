@@ -10,11 +10,11 @@
 // https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
 
 // Select the database to use.
-use('mongodbVSCodePlaygroundDB');
+use('ReviewData');
 
 // Insert a few documents into the sales collection.
-db.getCollection('sales').insertMany([
-  { 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
+db.getCollection('classes').insertMany([
+  { 'item': 'mahad', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
   { 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
   { 'item': 'xyz', 'price': 5, 'quantity': 10, 'date': new Date('2014-03-15T09:00:00Z') },
   { 'item': 'xyz', 'price': 5, 'quantity': 20, 'date': new Date('2014-04-04T11:21:39.736Z') },
@@ -25,7 +25,7 @@ db.getCollection('sales').insertMany([
 ]);
 
 // Run a find command to view items sold on April 4th, 2014.
-const salesOnApril4th = db.getCollection('sales').find({
+const salesOnApril4th = db.getCollection('classes').find({
   date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') }
 }).count();
 
@@ -35,7 +35,7 @@ console.log(`${salesOnApril4th} sales occurred in 2014.`);
 // Here we run an aggregation and open a cursor to the results.
 // Use '.toArray()' to exhaust the cursor to return the whole result set.
 // You can use '.hasNext()/.next()' to iterate through the cursor page by page.
-db.getCollection('sales').aggregate([
+db.getCollection('classes').aggregate([
   // Find all of the sales that occurred in 2014.
   { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
   // Group the total sales for each product.
