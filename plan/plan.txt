@@ -1,0 +1,19 @@
+We are going to make a classes review website for UCI students 
+
+Completed:
+    - Connect Flask and React together
+In progress:
+    - Plan out how the Website will look
+    - Set up React structure
+Tasks: 
+    Frontend 
+        - Build search feature for classes
+        - Build overall page structure mockup
+        - Find web hosting service 
+
+    Backend:
+        -Connect MongoDB to Flask
+    
+    Future
+        - scrape from Rate my professor for initial data
+        - Scale 

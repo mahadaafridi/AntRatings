@@ -1,16 +1,28 @@
+/*
+App component
+Overarching component at the highest level
+*/
 import logo from './logo.svg';
 import './App.css';
 import Message from './Message.tsx';
+import React, { Component } from "react";
+
+// new imports
+// import { Route, NavLink, HashRouter } from "react-router-dom";
+// import Home from "./Home";
+// import About from "./About";
+// import Contact from "./Contact";
+
 
 function App() {
   
   var flask_url = "http://127.0.0.1:5000"
   fetch(flask_url + "/hello", {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -24,33 +36,35 @@ function App() {
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
-  
+
+}
+
+/* Passing in a component is just <ComponentName/>. This renders it. 
+You can pass values into components by adding parameters to the functions
+
+*/
 // class App extends Component {
 //   render () {
-//     return ""
+//     return (
+//       <HashRouter>
+//         <div className="App">
+//           <h1>A Simple SPA made using React</h1>
+//           <ul className="header">
+//             <li><NavLink to="/">Home</NavLink></li>
+//             <li><NavLink to="/about">About</NavLink></li>
+//             <li><NavLink to="/contact">Contact</NavLink></li>
+//           </ul>
+//           <div className="content">
+//             <Routes>
+//               <Route exact path="/" element={<Home />}></Route>
+//               <Route exact path="/about" element={<About />}></Route>
+//               <Route exact path="/contact" element={<Contact />}></Route>
+//             </Routes>
+//           </div>
+//         </div>
+//       </HashRouter>
+//     );
 //   }
 // }
-
-
-
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
-}
 
 export default App;

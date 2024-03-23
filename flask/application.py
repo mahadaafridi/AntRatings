@@ -1,5 +1,20 @@
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
+
+#import statements for mongo:
+import bson
+
+from flask import current_app, g
+from werkzeug.local import LocalProxy
+#from flask_pymongo import PyMongo
+
+from pymongo.errors import DuplicateKeyError, OperationFailure
+from bson.objectid import ObjectId
+from bson.errors import InvalidId
+
+
+
+
 app = Flask(__name__)
 CORS(app)  # CORS is enabled for all routes for app
 
