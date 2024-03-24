@@ -3,9 +3,13 @@ App component
 Overarching component at the highest level
 */
 import logo from './logo.svg';
-import './App.css';
 import Message from './Message.tsx';
 import React, { Component } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import { Helmet } from 'react-helmet';
+
+
 
 // new imports
 import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
@@ -39,10 +43,8 @@ import UserInputComponent from './user_input.js';
 
 // }
 
-/* Passing in a component is just <ComponentName/>. This renders it. 
+/* Rendering in a component is just <ComponentName/>.
 You can pass values into components by adding parameters to the functions. 
-
-
 */
 // class App extends Component {
 //   render () {
@@ -72,10 +74,39 @@ You can pass values into components by adding parameters to the functions.
 export function App() {
   //MAHAD ADDED THIS STUFF
   return (
+    <>  
+    <Helmet>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap')
+      </style>
+    </Helmet>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <h1>AntRatings</h1>
+      </div>
+    </nav>
+
     <div>
-      <h1>Ant Ratings</h1>
-      <UserInputComponent /> {/* Include your UserInputComponent here */}
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
+            <p></p>
+          </div>
+          <div className="col-6">
+            <h2>Search for a class:</h2>
+            <hr></hr>
+            <div className="d-flex justify-content-center">
+              <UserInputComponent /> {/* Include your UserInputComponent here */}
+            </div>
+            
+          </div>
+          <div className="col-3">
+            <p></p>
+          </div>
+        </div>
+      </div>
     </div>
+    </>
   );
 
 

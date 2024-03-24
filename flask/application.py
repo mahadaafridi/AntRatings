@@ -44,13 +44,31 @@ def hello():
     data = {"test": "test"}
     return jsonify(data)
     
+# endpoint with url ending /api/data
 @app.route('/api/data', methods=['POST'])
 def receive_data_from_react():
+    '''
+    -Receives data from front end
+
+    '''
     data = request.get_json()
     user_input = data.get('userInput')
-    # Process user input as needed
+
+    #  get department
+
+    #  get course number
+
+
+    #this is where we can run functions on the data from mongo and return 
     print(user_input)
+    
     return jsonify({'message': 'Data received successfully'})
     
+
+@app.route('/api/pp', methods=['POST'])
+def receive_data_from_pp():
+    pp_url = "https://api-next.peterportal.org/v1/rest"
+    data = request.get_json()
+
 if __name__ == '__main__':
     app.run(debug=True)
