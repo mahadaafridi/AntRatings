@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserInputComponent = () => {
   const [inputValue, setInputValue] = useState('');
@@ -16,20 +17,30 @@ const UserInputComponent = () => {
 
       // console.log(response.data); 
     } catch (error) {
-      console.error('Error sending data to Flask:', error);
+      console.error('Error sending data to Flask: ', error);
     }
   };
 
   return (
     <div>
-      <label htmlFor="userInput">Course Name</label>
-      <input
-        type="text"
-        id="userInput"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <button onClick={sendDataToFlask}>Search</button>
+      <form class="row g-3">
+        <div className='col-auto'>
+          <label className="nameLabel" htmlFor="userInput">Course Name:</label>
+        </div>
+        <div className='col-auto'>
+          <input
+            className="form-control"
+            type="text"
+            id="userInput"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className='col-auto'>
+          <button className='btn btn-primary mb-3' onClick={sendDataToFlask}>Search</button>
+        </div>
+      </form>
+
       <p>{inputValue}</p> 
     </div>
   );
