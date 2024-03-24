@@ -8,39 +8,40 @@ import Message from './Message.tsx';
 import React, { Component } from "react";
 
 // new imports
-// import { Route, NavLink, HashRouter } from "react-router-dom";
-// import Home from "./Home";
-// import About from "./About";
-// import Contact from "./Contact";
+import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
+import Home from "./homepage/Home";
 
 
-function App() {
+import UserInputComponent from './user_input.js';
+
+// function App() {
   
-  var flask_url = "http://127.0.0.1:5000"
-  fetch(flask_url + "/hello", {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Handle the data from the API
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
+//   var flask_url = "http://127.0.0.1:5000"
+//   fetch(flask_url + "/hello", {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   })
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     // Handle the data from the API
+//     console.log(data);
+//   })
+//   .catch(error => {
+//     console.error('There was a problem with the fetch operation:', error);
+//   });
 
-}
+// }
 
 /* Passing in a component is just <ComponentName/>. This renders it. 
-You can pass values into components by adding parameters to the functions
+You can pass values into components by adding parameters to the functions. 
+
 
 */
 // class App extends Component {
@@ -66,5 +67,23 @@ You can pass values into components by adding parameters to the functions
 //     );
 //   }
 // }
+
+
+export function App() {
+  //MAHAD ADDED THIS STUFF
+  return (
+    <div>
+      <h1>Ant Ratings</h1>
+      <UserInputComponent /> {/* Include your UserInputComponent here */}
+    </div>
+  );
+
+
+  return (
+    <nav class="navbar-container container"> </nav>
+
+
+  );
+}
 
 export default App;
