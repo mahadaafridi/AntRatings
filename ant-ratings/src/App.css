@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -8,6 +10,10 @@ h1 {
   font-weight: 400;
   font-style: normal;
   color: green;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4eacbac0f5fe6acc4415eea0baad3b9cf40fa22a
 }
 
 .nameLabel {
