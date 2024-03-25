@@ -4,6 +4,7 @@ from flask_cors import CORS
 #import statements for mongo:
 from flask import Flask
 from pymongo import MongoClient
+import requests
 
 
 
@@ -39,41 +40,47 @@ def index():
     return 'Hello, World! This is the homepage.'
 
 # endpoint with url ending /hello
-@app.route('/hello', methods=['GET'])
-def hello():
-    data = {"test": "test"}
-    return jsonify(data)
+# @app.route('/api/data', methods=['GET'])
+# def hello():
+#     data = {"department": "ICS",
+#             "course_number": "6B",
+#             "Review": "boring class"}
+#     return jsonify(data)
+
+
     
 # endpoint with url ending /api/data
 @app.route('/api/data', methods=['POST'])
 def receive_data_from_react():
     '''
-    -Receives data from front end
-
+    Receives data from front end
     '''
     data = request.get_json()
+    
     user_input = data.get('userInput')
-
+    
     #  get department
+    selected_item = data.get('selected_item')
 
-    #  get course number
+    # user_input = request.args.get('userInput')
+    # selected_item = request.args.get('selected_item')
+    
+
 
 
     #this is where we can run functions on the data from mongo and return 
     print(user_input)
-    
+    print(selected_item) 
+
+    # return reviews
     return jsonify({'message': 'Data received successfully'})
-
-@app.route('/api/pp', methods=['POST'])
-def receive_data_from_pp():
-    pp_url = "https://api-next.peterportal.org/v1/rest"
-    data = request.get_json()
     
 
-@app.route('/api/pp', methods=['POST'])
-def receive_data_from_pp():
-    pp_url = "https://api-next.peterportal.org/v1/rest"
-    data = request.get_json()
+# @app.route('/api/pp', methods=['POST'])
+# def receive_data_from_pp():
+    
+#     pp_url = "https://api-next.peterportal.org/v1/rest"
+#     data = request.get_json()
 
 if __name__ == '__main__':
     app.run(debug=True)

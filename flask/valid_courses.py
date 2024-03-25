@@ -43,6 +43,8 @@ def insert_department_data():
             'department_name': department, 
             }
         #db.valid_departments.insert_one(department_id)
+    
+    
     return valid_departments
 
 
@@ -67,7 +69,7 @@ def insert_class_by_department():
 # only running once in order to get data from peter portal to
 # put into Mongo database for future use dna
 if __name__ == "__main__":
-    insert_class_by_department()
+    # insert_class_by_department()
     #insert_valid_departments()
     
 

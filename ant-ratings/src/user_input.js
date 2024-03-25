@@ -6,7 +6,7 @@ import { Dropdown, Button, Form } from 'react-bootstrap'; // Import React Bootst
 
 const UserInputComponent = () => {
   const [inputValue, setInputValue] = useState('');
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState("Select");
 
   const handleSelect = (eventKey) => {
     setSelectedItem(eventKey);
@@ -20,8 +20,9 @@ const UserInputComponent = () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/api/data', {
         userInput: inputValue,
+        selected_item: selectedItem
       });
-      console.log('ran sendDataToFlask in user_input.js, data is ' + inputValue);
+      console.log('ran sendDataToFlask in user_input.js, data is ' + inputValue + " " + selectedItem);
 
       // console.log(response.data);
     } catch (error) {
@@ -86,8 +87,32 @@ const UserInputComponent = () => {
               <Dropdown.Item eventKey="ED AFF">ED AFF</Dropdown.Item>
               <Dropdown.Item eventKey="EDUC">EDUC</Dropdown.Item>
               <Dropdown.Item eventKey="EECS">EECS</Dropdown.Item>
-              <Dropdown.Item eventKey="Item">Select</Dropdown.Item>
-              <Dropdown.Item eventKey="Item">Select</Dropdown.Item>
+              <Dropdown.Item eventKey="EHS">EHS</Dropdown.Item>
+              <Dropdown.Item eventKey="ENGLISH">ENGLISH</Dropdown.Item>
+              <Dropdown.Item eventKey="ENGR">ENGR</Dropdown.Item>
+              <Dropdown.Item eventKey="ENGRCEE">ENGRCEE</Dropdown.Item>
+              <Dropdown.Item eventKey="ENGRMAE">ENGRMAE</Dropdown.Item>
+              <Dropdown.Item eventKey="EPIDEM">EPIDEM</Dropdown.Item>
+              <Dropdown.Item eventKey="EURO ST">EURO ST</Dropdown.Item>
+              <Dropdown.Item eventKey="FIN">FIN</Dropdown.Item>
+              <Dropdown.Item eventKey="FLM&MDA">FLM&MDA</Dropdown.Item>
+              <Dropdown.Item eventKey="FRENCH">FRENCH</Dropdown.Item>
+              <Dropdown.Item eventKey="GDIM">GDIM</Dropdown.Item>
+              <Dropdown.Item eventKey="GEN&SEX">GEN&SEX</Dropdown.Item>
+              <Dropdown.Item eventKey="GERMAN">GERMAN</Dropdown.Item>
+              <Dropdown.Item eventKey="GLBL ME">GLBL ME</Dropdown.Item>
+              <Dropdown.Item eventKey="GLBLCLT">GLBLCLT</Dropdown.Item>
+              <Dropdown.Item eventKey="GREEK">GREEK</Dropdown.Item>
+              <Dropdown.Item eventKey="HEBREW">HEBREW</Dropdown.Item>
+              <Dropdown.Item eventKey="HINDI">HINDI</Dropdown.Item>
+              <Dropdown.Item eventKey="HISTORY">HISTORY</Dropdown.Item>
+              <Dropdown.Item eventKey="HUMAN">HUMAN</Dropdown.Item>
+              <Dropdown.Item eventKey="HUMARTS">HUMARTS</Dropdown.Item>
+              <Dropdown.Item eventKey="I&C SCI">I&C SCI</Dropdown.Item>
+              <Dropdown.Item eventKey="IN4MATX">IN4MATX</Dropdown.Item>
+              <Dropdown.Item eventKey="INTL ST">INTL ST</Dropdown.Item>
+              <Dropdown.Item eventKey="IRAN">IRAN</Dropdown.Item>
+              <Dropdown.Item eventKey="ITALIAN">ITALIAN</Dropdown.Item>
               <Dropdown.Item eventKey="Item">Select</Dropdown.Item>
               <Dropdown.Item eventKey="Item">Select</Dropdown.Item>
               <Dropdown.Item eventKey="Item">Select</Dropdown.Item>
