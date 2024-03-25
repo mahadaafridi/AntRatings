@@ -1,18 +1,15 @@
-
-
 .App {
   text-align: center;
 }
 
-h1 {
-  margin-left: 3em;
+.logo {
+  margin-left: 1em;
   font-family: "Rubik Scribble", system-ui;
   font-weight: 400;
   font-style: normal;
   color: green;
-
+  font-size: 2em;
 }
 
-.nameLabel {
-  margin-right: 3em;
-}
+/* #nameLabel {
+} */

@@ -51,6 +51,11 @@ def receive_data_from_react():
     # Process user input as needed
     print(user_input)
     return jsonify({'message': 'Data received successfully'})
+
+@app.route('/api/pp', methods=['POST'])
+def receive_data_from_pp():
+    pp_url = "https://api-next.peterportal.org/v1/rest"
+    data = request.get_json()
     
 if __name__ == '__main__':
     app.run(debug=True)

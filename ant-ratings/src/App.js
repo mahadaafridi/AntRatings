@@ -6,8 +6,9 @@ import logo from './logo.svg';
 import Message from './Message.tsx';
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { Navbar, Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import './App.css';
 
 
 
@@ -46,75 +47,41 @@ import UserInputComponent from './user_input.js';
 /* Rendering in a component is just <ComponentName/>.
 You can pass values into components by adding parameters to the functions. 
 */
-// class App extends Component {
-//   render () {
-//     return (
-//       <HashRouter>
-//         <div className="App">
-//           <h1>A Simple SPA made using React</h1>
-//           <ul className="header">
-//             <li><NavLink to="/">Home</NavLink></li>
-//             <li><NavLink to="/about">About</NavLink></li>
-//             <li><NavLink to="/contact">Contact</NavLink></li>
-//           </ul>
-//           <div className="content">
-//             <Routes>
-//               <Route exact path="/" element={<Home />}></Route>
-//               <Route exact path="/about" element={<About />}></Route>
-//               <Route exact path="/contact" element={<Contact />}></Route>
-//             </Routes>
-//           </div>
-//         </div>
-//       </HashRouter>
-//     );
-//   }
-// }
-
 
 export function App() {
-  //MAHAD ADDED THIS STUFF
   return (
-    <>  
-    <Helmet>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap')
-      </style>
-    </Helmet>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <h1>AntRatings</h1>
-      </div>
-    </nav>
+    <>
+      <Helmet>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+        </style>
+      </Helmet>
+      <Navbar bg="body-tertiary" expand="lg">
+        <Container fluid>
+          <Navbar.Brand className="logo">AntRatings</Navbar.Brand>
+        </Container>
+      </Navbar>
 
-    <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-3">
+      <Container>
+        <Row>
+          <Col md={3}>
             <p></p>
-          </div>
-          <div className="col-6">
+          </Col>
+          <Col md={6}>
             <h2>Search for a class:</h2>
             <hr></hr>
             <div className="d-flex justify-content-center">
               <UserInputComponent /> {/* Include your UserInputComponent here */}
             </div>
-            
-          </div>
-          <div className="col-3">
+          </Col>
+          <Col md={3}>
             <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 
-
-  return (
-    <nav class="navbar-container container"> </nav>
-
-
-  );
-}
+  }
 
 export default App;
