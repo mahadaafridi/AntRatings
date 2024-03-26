@@ -44,11 +44,26 @@ class Database():
         
         #json_data = json.dumps(matching_reviews.next())
         #print(json_data)
-
-
-    
-
+    def addReview(self, department: str, course_num: str, difficulty: str, hrs_per_week: str, text: str) -> bool:
+        """
+        Adds a single review to the database. Returns True if sucessfull
+        """
+        #ensures that for each review has certain values
+        if department and course_num and difficulty and hrs_per_week: 
+            class_info = {
+                'department': department,
+                'course_num': course_num,
+                'difficulty': difficulty,
+                'hrs_per_week': hrs_per_week,
+                'text': text 
+                }
+            
+            db.classes.insert_one(class_info)
+            return True
+        return False
+        
 if __name__ == '__main__':
+
     db = Database()
     db.getReviews('CS', '171')
 
