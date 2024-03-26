@@ -13,9 +13,8 @@ import './App.css';
 
 
 // new imports
-import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./homepage/Home";
-
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import UserInputComponent from './user_input.js';
 
@@ -51,34 +50,39 @@ You can pass values into components by adding parameters to the functions.
 export function App() {
   return (
     <>
-      <Helmet>
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
-        </style>
-      </Helmet>
-      <Navbar bg="body-tertiary" expand="lg">
-        <Container fluid>
-          <Navbar.Brand className="logo">AntRatings</Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Router>
+        <Helmet>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+          </style>
+        </Helmet>
+        <Navbar bg="body-tertiary" expand="lg">
+          <Container fluid>
+            <Navbar.Brand className="logo">AntRatings</Navbar.Brand>
+          </Container>
+        </Navbar>
 
-      <Container>
-        <Row>
-          <Col md={3}>
-            <p></p>
-          </Col>
-          <Col md={6}>
-            <h2>Search for a class:</h2>
-            <hr></hr>
-            <div className="d-flex justify-content-center">
-              <UserInputComponent /> {/* Include your UserInputComponent here */}
-            </div>
-          </Col>
-          <Col md={3}>
-            <p></p>
-          </Col>
-        </Row>
-      </Container>
+        <Container>
+          <Row>
+            <Col md={3}>
+              <p></p>
+            </Col>
+            <Col md={6}>
+              <h2>Search for a class:</h2>
+              <hr></hr>
+              <div className="d-flex justify-content-center">
+              <Routes>
+                <Route path="/" element={<UserInputComponent />} />
+                <Route path="/Home" element={<Home />} />
+              </Routes>
+              </div>
+            </Col>
+            <Col md={3}>
+              <p></p>
+            </Col>
+          </Row>
+        </Container>
+      </Router>
     </>
   );
 
