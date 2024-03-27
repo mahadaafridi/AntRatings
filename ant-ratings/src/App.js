@@ -12,7 +12,8 @@ import './App.css';
 
 
 // new imports
-import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import AddReview from './add-review/AddReview.js';
 import Home from "./homepage/Home";
 
 
