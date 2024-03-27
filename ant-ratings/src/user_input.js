@@ -33,6 +33,8 @@ const UserInputComponent = () => {
 
   return (
     <div>
+      <h2>Search for a class:</h2>
+      <hr></hr>
       <Form className="row g-3">
         <Form.Group className="col-auto">
           <Form.Label id="nameLabel" htmlFor="userInput">
@@ -182,7 +184,7 @@ const UserInputComponent = () => {
           />
         </Form.Group>
         <Form.Group className="col-auto">
-          <Button className="btn-primary mb-3" onClick={sendDataToFlask}>
+          <Button className="btn-primary mb-3" onClick={sendDataToFlask} href="/AddReview">
             Search
           </Button>
         </Form.Group>
