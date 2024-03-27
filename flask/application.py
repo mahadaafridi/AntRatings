@@ -36,7 +36,10 @@ def index():
     # {'item': 'mahad', 'price': 100000000, 'quantity': 1 }
     #  ])
 
+    #data = request.get_json()
     
+    #user_input = data.get('userInput')
+    print("somethign happened")
     return 'Hello, World! This is the homepage.'
 
 # endpoint with url ending /hello
@@ -75,6 +78,39 @@ def receive_data_from_react():
     # return reviews
     return jsonify({'message': 'Data received successfully'})
 
+
+@app.route('/Course/api/data', methods=['POST'])
+def PLEASEWORK():
+    '''
+    Receives data from front end
+    '''
+    data = request.get_json()
+    
+    class_dif = data.get('class_dif')
+    
+    #  get department
+    hrs_week = data.get('hrs_week')
+
+    rev = data.get('rev')
+
+    # user_input = request.args.get('userInput')
+    # selected_item = request.args.get('selected_item')
+    
+
+
+
+    #this is where we can run functions on the data from mongo and return 
+    print(class_dif)
+    print(hrs_week) 
+    print(rev) 
+    print("somethings happenedsd")
+
+
+    # return reviews
+    return jsonify({'message': 'Data received successfully'})
+
+
+
 @app.route('/AddReview/api/data', methods=['POST'])
 def receive_review_from_react():
     '''
@@ -99,6 +135,8 @@ def receive_review_from_react():
     print(class_dif)
     print(hrs_week) 
     print(rev) 
+    print("somethings happenedsd")
+
 
     # return reviews
     return jsonify({'message': 'Data received successfully'})

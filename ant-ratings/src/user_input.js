@@ -7,6 +7,7 @@ import { Dropdown, Button, Form } from 'react-bootstrap'; // Import React Bootst
 const UserInputComponent = () => {
   const [inputValue, setInputValue] = useState('');
   const [selectedItem, setSelectedItem] = useState("Select");
+  const courseName = "/CoursePage/" + selectedItem + inputValue;
 
   const handleSelect = (eventKey) => {
     setSelectedItem(eventKey);
@@ -184,7 +185,7 @@ const UserInputComponent = () => {
           />
         </Form.Group>
         <Form.Group className="col-auto">
-          <Button className="btn-primary mb-3" onClick={sendDataToFlask} href="/AddReview">
+          <Button className="btn-primary mb-3" onClick={sendDataToFlask} href={courseName}>
             Search
           </Button>
         </Form.Group>

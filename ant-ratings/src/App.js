@@ -2,6 +2,7 @@
 App component
 Overarching component at the highest level
 */
+import logo from './logo.svg';
 import Message from './Message.tsx';
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,9 +13,10 @@ import './App.css';
 
 
 // new imports
+import Home from "./homepage/Home";
 import AddReview from './add-review/AddReview.js';
 import CoursePage from './course-page/CoursePage.js';
-import {Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import UserInputComponent from './user_input.js';
 
@@ -48,6 +50,7 @@ You can pass values into components by adding parameters to the functions.
 */
 
 export function App() {
+
   return (
     <>
       <Router>
@@ -64,19 +67,20 @@ export function App() {
 
         <Container>
           <Row>
-            <Col md={3}>
+            <Col md={3} lg={2}>
               <p></p>
             </Col>
-            <Col md={6}>
+            <Col md={6} lg={8}>
               <div className="d-flex justify-content-center">
               <Routes>
-                <Route exact path="/" element={<UserInputComponent />} />
+                <Route path="/" element={<UserInputComponent />} />
                 <Route path="/AddReview" element={<AddReview />} />
-                <Route path="/CoursePage" element={<CoursePage />} />
+                <Route path="/Home" element={<Home />} />
+                <Route path="/CoursePage/:courseId" element={<CoursePage />} />
               </Routes>
               </div>
             </Col>
-            <Col md={3}>
+            <Col md={3} lg={2}>
               <p></p>
             </Col>
           </Row>

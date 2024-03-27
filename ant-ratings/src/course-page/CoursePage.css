@@ -1,6 +1,35 @@
-#number-holder {
+#ratings {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.num-and-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em
+}
+
+.num-and-title > h3 {
+    text-wrap: nowrap;
+}
+
+.rating-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    width: 6em;
+    height: 6em;
+}
+
+.rating-holder > h4 {
+    font-size: 2em;
+}
+
+hr {
+    margin-bottom: 2em;
 }
 
