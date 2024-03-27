@@ -14,6 +14,7 @@ import './App.css';
 
 // new imports
 import Home from "./homepage/Home";
+import AddReview from './add-review/AddReview.js';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import UserInputComponent from './user_input.js';
@@ -73,7 +74,7 @@ export function App() {
               <div className="d-flex justify-content-center">
               <Routes>
                 <Route path="/" element={<UserInputComponent />} />
-                <Route path="/Home" element={<Home />} />
+                <Route path="/AddReview" element={<AddReview />} />
               </Routes>
               </div>
             </Col>

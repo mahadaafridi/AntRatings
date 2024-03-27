@@ -74,6 +74,34 @@ def receive_data_from_react():
 
     # return reviews
     return jsonify({'message': 'Data received successfully'})
+
+@app.route('/AddReview/api/data', methods=['POST'])
+def receive_review_from_react():
+    '''
+    Receives data from front end
+    '''
+    data = request.get_json()
+    
+    class_dif = data.get('class_dif')
+    
+    #  get department
+    hrs_week = data.get('hrs_week')
+
+    rev = data.get('rev')
+
+    # user_input = request.args.get('userInput')
+    # selected_item = request.args.get('selected_item')
+    
+
+
+
+    #this is where we can run functions on the data from mongo and return 
+    print(class_dif)
+    print(hrs_week) 
+    print(rev) 
+
+    # return reviews
+    return jsonify({'message': 'Data received successfully'})
     
 
 # @app.route('/api/pp', methods=['POST'])
