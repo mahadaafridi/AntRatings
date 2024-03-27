@@ -2,7 +2,6 @@
 App component
 Overarching component at the highest level
 */
-import logo from './logo.svg';
 import Message from './Message.tsx';
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,9 +12,9 @@ import './App.css';
 
 
 // new imports
+import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
 import Home from "./homepage/Home";
-import AddReview from './add-review/AddReview.js';
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
 
 import UserInputComponent from './user_input.js';
 
