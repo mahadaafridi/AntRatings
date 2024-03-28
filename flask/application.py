@@ -85,17 +85,13 @@ def recieve_course_info_return_course_rev():
     Receives data from front end
     '''
 
-    print("reached here")
     data = request.get_json()
     
     class_dif = data.get('courseid')
-    print(class_dif)
     department, course_num = _split_course_id(class_dif)
 
     db = Database()
     class_difficulty_avg, hrs_per_week_avg, all_reviews = db.getReviews(department, course_num)
-    print("it got here")
-    print(class_difficulty_avg)
     
     # issue here 
     return jsonify({'class_difficulty_avg' : class_difficulty_avg, 'hrs_per_week_avg' : hrs_per_week_avg, 
@@ -116,18 +112,27 @@ def receive_review_from_react():
     hrs_week = data.get('hrs_week')
 
     rev = data.get('rev')
+    course_num = data.get('courseid')
+    department = data.get('course_department')
 
+    professor_name = data.get('professor_name')
+    # this should be the database
+
+    # order  department: str, course_num: str, difficulty: str, hrs_per_week: str, text: str, professor_name: str
+    
+    db = Database()
+    db.addReview(department, course_num, class_dif, hrs_week, rev, professor_name)
+    # print(collection)
+    # print(db)
+ 
+    
     # user_input = request.args.get('userInput')
     # selected_item = request.args.get('selected_item')
-    
 
 
 
     #this is where we can run functions on the data from mongo and return 
-    print(class_dif)
-    print(hrs_week) 
-    print(rev) 
-    print("somethings happenedsd")
+    
 
 
     # return reviews

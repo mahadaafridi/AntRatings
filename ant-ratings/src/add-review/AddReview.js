@@ -10,6 +10,7 @@ const AddReview = () => {
   const [class_difficulty, setDifficulty] = useState('');
   const [hrsPerWeek, setHrsPerWeek] = useState('');
   const [review, setReview] = useState('');
+  const [prof_name, setProfName] = useState('');
 
   const handleButtonDifficulty = (value) => {
     setDifficulty(value);
@@ -22,13 +23,20 @@ const AddReview = () => {
   const handleRevChange = (event) => {
     setReview(event.target.value);
   };
+
+  const handleProfChange = (event) => {
+    setProfName(event.target.value);
+  };
     
   const sendDataToFlask = async () => {    
     try {
       const response = await axios.post('http://127.0.0.1:5000/AddReview/api/data', {
         class_dif: class_difficulty,
         hrs_week: hrsPerWeek,
-        rev: review
+        rev: review,
+        courseid: courseId,
+        course_department : dept,
+        professor_name : prof_name
 
       });
       console.log('ran sendDataToFlask in user_input.js, data is ' + class_difficulty + " " + hrsPerWeek + " " + review);
@@ -70,6 +78,12 @@ const AddReview = () => {
             id="reviewTextArea"
             value={review}
             onChange={handleRevChange}
+            />
+        <p> Professor_name: {prof_name} </p>
+        <textarea
+            id="prof_name_area"
+            value={prof_name}
+            onChange={handleProfChange}
             />
         <button type="submit">Add Review</button>
       </form>

@@ -57,13 +57,13 @@ class Database():
 
 
         
-
-        hrs_per_week_val = round(hrs_per_week_val / reviews_len, 1)
-        class_difficulty_value = round(class_difficulty_value / reviews_len, 1)
+        if hrs_per_week_val and class_difficulty_value:
+            hrs_per_week_val = round(hrs_per_week_val / reviews_len, 1)
+            class_difficulty_value = round(class_difficulty_value / reviews_len, 1)
 
         return str(class_difficulty_value), str(hrs_per_week_val), matching_reviews_list
 
-    def addReview(self, department: str, course_num: str, difficulty: str, hrs_per_week: str, text: str) -> bool:
+    def addReview(self, department: str, course_num: str, difficulty: str, hrs_per_week: str, text: str, professor_name: str) -> bool:
         """
         Adds a single review to the database. Returns True if sucessfull
         """
@@ -72,12 +72,13 @@ class Database():
             class_info = {
                 'department': department,
                 'course_num': course_num,
+                'prof_name': professor_name,
                 'difficulty': difficulty,
                 'hrs_per_week': hrs_per_week,
                 'text': text 
                 }
             
-            db.classes.insert_one(class_info)
+            self.database.classes.insert_one(class_info)
             return True
         return False
         
