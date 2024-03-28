@@ -14,6 +14,9 @@ import { interpolateRdYlGn } from 'd3-scale-chromatic';
 
 
 const CoursePage = () => {
+    const [reviews, setReviews] = useState(null);
+    const [loading, setLoading] = useState(true); // Initialize loading state variable
+
     const dept = useParams()["dept"]
     const courseId = useParams()["courseId"]
     // http://127.0.0.1:5000/Course/api/data
@@ -25,8 +28,10 @@ const CoursePage = () => {
           const response = await axios.post('http://127.0.0.1:5000/Course/api/data', {
             courseid: dept + courseId,
           });
-    
-        console.log(response.data); 
+          console.log(response.data)
+          setReviews(response["data"]);
+          console.log(reviews)
+          setLoading(false);
         } catch (error) {
           console.error('Error sending data to Flask: ', error);
         }
@@ -47,7 +52,7 @@ const CoursePage = () => {
     //  }
     // console.log(sendDataToFlask())
     
-    const reviews = [{"id": 0, "review": "test review text"}, {"id": 1}, {"id": 2},]  // temporary element to hold reviews
+    // const reviews = [{"id": 0, "review": "test review text"}, {"id": 1}, {"id": 2},]  // temporary element to hold reviews
     const colorScale = scaleSequential(interpolateRdYlGn);
     const diffColor = colorScale(1/5); // REPLACE 1 WITH DIFFICULTY RATING
     const hrsColor = colorScale(1 - 1/50)  // REPLACE DIVISOR WITH HRS PER WEEK
@@ -79,25 +84,21 @@ const CoursePage = () => {
             <hr></hr>
 
             <div className="reviews">
-                {/* {for (number i = 0; i < reviews.length; )
-
-                } */}
-                {reviews.map((review) => {
+                {reviews===null && (
+                    <p>loading...</p>
+                )}
+                { !(reviews===null) && (reviews.map((review) => {
                     return (
                     <Card className="card-element" key={review["id"]}>
                         <Card.Body>
                         <Card.Title>Card Title</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
+                            {review["text"]}
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#"> {review["id"]}</Card.Link>
                         </Card.Body>
                     </Card>
                     )
-                })}
+                }))}
             </div>
             
             
