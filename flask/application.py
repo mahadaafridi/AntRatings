@@ -5,7 +5,7 @@ from flask_cors import CORS
 from flask import Flask
 from pymongo import MongoClient
 import requests
-
+from database_requests import Database
 
 
 
@@ -80,34 +80,23 @@ def receive_data_from_react():
 
 
 @app.route('/Course/api/data', methods=['POST'])
-def PLEASEWORK():
+def recieve_course_info_return_course_rev():
     '''
     Receives data from front end
     '''
     data = request.get_json()
     
-    class_dif = data.get('class_dif')
+    class_dif = data.get('courseid')
+    department, course_num = _split_course_id(class_dif)
+
+    db = Database()
+    class_difficulty_avg, hrs_per_week_avg, all_reviews = db.getReviews(department, course_num)
+
+
     
-    #  get department
-    hrs_week = data.get('hrs_week')
-
-    rev = data.get('rev')
-
-    # user_input = request.args.get('userInput')
-    # selected_item = request.args.get('selected_item')
-    
-
-
-
-    #this is where we can run functions on the data from mongo and return 
-    print(class_dif)
-    print(hrs_week) 
-    print(rev) 
-    print("somethings happenedsd")
-
-
-    # return reviews
-    return jsonify({'message': 'Data received successfully'})
+    # issue here 
+    return jsonify({'class_difficulty_avg' : class_difficulty_avg, 'hrs_per_week_avg' : hrs_per_week_avg, 
+                    'all_reviews' : all_reviews})
 
 
 
@@ -147,6 +136,20 @@ def receive_review_from_react():
     
 #     pp_url = "https://api-next.peterportal.org/v1/rest"
 #     data = request.get_json()
+
+def _split_course_id(department_and_course: str) -> tuple[str, str]:
+    """
+    helper funciton to split the department and course
+    """
+    department = ''
+    course_id = ''
+    for char in department_and_course:
+        if char.isalpha() and char.isupper():
+            department += char
+        else:
+            course_id += char
+    
+    return department, course_id    
 
 if __name__ == '__main__':
     app.run(debug=True)
