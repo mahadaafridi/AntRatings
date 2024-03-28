@@ -24,7 +24,7 @@ const CoursePage = () => {
           });
           console.log('ran sendDataToFlask in user_input.js, data is ' + inputValue + " " + selectedItem);
     
-          console.log(response.data);
+        console.log(response.data); 
         } catch (error) {
           console.error('Error sending data to Flask: ', error);
         }
