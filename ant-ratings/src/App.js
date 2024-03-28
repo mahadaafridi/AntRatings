@@ -18,7 +18,7 @@ import AddReview from './add-review/AddReview.js';
 import CoursePage from './course-page/CoursePage.js';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
-import UserInputComponent from './user_input.js';
+import UserInputComponent from './UserInput.js';
 
 // function App() {
   
@@ -57,9 +57,10 @@ export function App() {
         <Helmet>
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik+Scribble&display=swap')
           </style>
         </Helmet>
-        <Navbar bg="body-tertiary" expand="lg">
+        <Navbar className="nav-color" variant='dark' expand="lg">
           <Container fluid>
             <Navbar.Brand className="logo">AntRatings</Navbar.Brand>
           </Container>

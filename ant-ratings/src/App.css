@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #3454D1
+}
+
 .App {
   text-align: center;
 }
@@ -7,9 +11,14 @@
   font-family: "Rubik Scribble", system-ui;
   font-weight: 400;
   font-style: normal;
-  color: green;
+  color: white;
   font-size: 2em;
 }
 
-/* #nameLabel {
-} */
+.nav-color {
+  background-color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}
