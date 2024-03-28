@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from "react-bootstrap";
+import { Button, Card} from "react-bootstrap";
 
 import "./CoursePage.css"
 import axios from 'axios';
@@ -51,13 +51,13 @@ const CoursePage = () => {
     //  }
     // console.log(sendDataToFlask())
     
-    const reviews = []  // temporary element to hold reviews
+    const reviews = [{"id": 0, "review": "test review text"}, {"id": 1}, {"id": 2},]  // temporary element to hold reviews
     const colorScale = scaleSequential(interpolateRdYlGn);
     const diffColor = colorScale(1/5); // REPLACE 1 WITH DIFFICULTY RATING
     const hrsColor = colorScale(1 - 1/50)  // REPLACE DIVISOR WITH HRS PER WEEK
     const diffStyle = {backgroundColor: diffColor};
     const hrsStyle = {backgroundColor: hrsColor};
-    const addReviewLink = "/AddReview/" + dept + courseId;
+    const addReviewLink = "/AddReview/" + dept + "/" + courseId;
     return (
         <div>
             <div id="ratings">
@@ -82,8 +82,24 @@ const CoursePage = () => {
             <hr></hr>
 
             <div className="reviews">
+                {/* {for (number i = 0; i < reviews.length; )
+
+                } */}
                 {reviews.map((review) => {
-                    // display reviews
+                    return (
+                    <Card className="card-element" key={review["id"]}>
+                        <Card.Body>
+                        <Card.Title>Card Title</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                        <Card.Text>
+                            Some quick example text to build on the card title and make up the
+                            bulk of the card's content.
+                        </Card.Text>
+                        <Card.Link href="#">Card Link</Card.Link>
+                        <Card.Link href="#"> {review["id"]}</Card.Link>
+                        </Card.Body>
+                    </Card>
+                    )
                 })}
             </div>
             
