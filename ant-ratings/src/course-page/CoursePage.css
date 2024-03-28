@@ -42,8 +42,18 @@ body {
     justify-content: space-between;
 }
 
+#add-review {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #plus-img {
     max-width: 1.5em;
     max-height: 1.5em;
 }
 
+.card-element {
+    max-width: 50rem;
+    margin: 3em;
+}
