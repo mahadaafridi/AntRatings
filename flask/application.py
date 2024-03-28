@@ -84,15 +84,18 @@ def recieve_course_info_return_course_rev():
     '''
     Receives data from front end
     '''
+
+    print("reached here")
     data = request.get_json()
     
     class_dif = data.get('courseid')
+    print(class_dif)
     department, course_num = _split_course_id(class_dif)
 
     db = Database()
     class_difficulty_avg, hrs_per_week_avg, all_reviews = db.getReviews(department, course_num)
-
-
+    print("it got here")
+    print(class_difficulty_avg)
     
     # issue here 
     return jsonify({'class_difficulty_avg' : class_difficulty_avg, 'hrs_per_week_avg' : hrs_per_week_avg, 

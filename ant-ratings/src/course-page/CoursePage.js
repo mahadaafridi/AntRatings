@@ -16,9 +16,6 @@ import { interpolateRdYlGn } from 'd3-scale-chromatic';
 const CoursePage = () => {
     const dept = useParams()["dept"]
     const courseId = useParams()["courseId"]
-
-    const [inputValue, setInputValue] = useState('sadfsads');
-    const [selectedItem, setSelectedItem] = useState("Sdddelect");
     // http://127.0.0.1:5000/Course/api/data
     
 
@@ -28,14 +25,13 @@ const CoursePage = () => {
           const response = await axios.post('http://127.0.0.1:5000/Course/api/data', {
             courseid: dept + courseId,
           });
-          console.log('ran sendDataToFlask in user_input.js, data is ' + inputValue + " " + selectedItem);
     
         console.log(response.data); 
         } catch (error) {
           console.error('Error sending data to Flask: ', error);
         }
       };
-    // sendDataToFlask()
+    sendDataToFlask()
     
     // const sendDataToFlask = async () => {
     //     try {
@@ -57,8 +53,9 @@ const CoursePage = () => {
     const hrsColor = colorScale(1 - 1/50)  // REPLACE DIVISOR WITH HRS PER WEEK
     const diffStyle = {backgroundColor: diffColor};
     const hrsStyle = {backgroundColor: hrsColor};
-    const addReviewLink = "/AddReview/" + dept + courseId;
+    const addReviewLink = "/AddReview/" + dept + "/" + courseId;
     return (
+
         <div>
             <div id="ratings">
                 <div className="num-and-title">
