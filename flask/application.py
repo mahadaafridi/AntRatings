@@ -5,7 +5,7 @@ from flask_cors import CORS
 from flask import Flask
 from pymongo import MongoClient
 import requests
-from database_requests import Database as db
+from database_requests import Database
 
 
 
@@ -89,16 +89,14 @@ def recieve_course_info_return_course_rev():
     class_dif = data.get('courseid')
     department, course_num = _split_course_id(class_dif)
 
+    db = Database()
+    class_difficulty_avg, hrs_per_week_avg, all_reviews = db.getReviews(department, course_num)
+
+
     
-    #this is where we can run functions on the data from mongo and return 
-    print(department)
-
-    print(course_num)
-    
-
-
-    # return reviews
-    return jsonify({'message': 'Data received successfully', 'yeet': 'it works'})
+    # issue here 
+    return jsonify({'class_difficulty_avg' : class_difficulty_avg, 'hrs_per_week_avg' : hrs_per_week_avg, 
+                    'all_reviews' : all_reviews})
 
 
 
