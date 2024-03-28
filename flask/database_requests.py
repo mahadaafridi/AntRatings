@@ -11,7 +11,7 @@ class Database():
         self.client = MongoClient("mongodb+srv://mahadakbarafridi:awvnF4jCC9NTztHV@cluster0.gppjo6c.mongodb.net/")
         self.database = self.client['classes_data']
 
-    def getReviews(self, department: str, course_number: str) -> tuple[str, str, list[dict]]:
+    def getReviews(self, department: str, course_number: str) -> tuple[str, str, list[list]]:
         """
         recieve class information and returns all reviews for the class
         r types
@@ -38,12 +38,25 @@ class Database():
         reviews_len = 0
         matching_reviews_list = []
 
+    
         for review in matching_reviews:
             class_difficulty_value += review['difficulty']
             hrs_per_week_val += review['hrs_per_week']
-            reviews_len += 1   
-            json_review = loads(dumps(review))
-            matching_reviews_list.append(json_review)
+            reviews_len += 1  
+            #tuple () 
+            review_dict = {
+            'id' : reviews_len - 1, 
+            'department': review['department'],
+            'course_num': review['course_num'],
+            'difficulty':   review['difficulty'],
+            'hrs_per_week': review['hrs_per_week'],
+            'text': review['text']
+            }
+
+            matching_reviews_list.append(review_dict)
+
+
+        
 
         hrs_per_week_val = round(hrs_per_week_val / reviews_len, 1)
         class_difficulty_value = round(class_difficulty_value / reviews_len, 1)
