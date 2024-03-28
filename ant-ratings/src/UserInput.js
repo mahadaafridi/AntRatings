@@ -8,7 +8,7 @@ import "./UserInput.css"
 const UserInputComponent = () => {
   const [inputValue, setInputValue] = useState('');
   const [selectedItem, setSelectedItem] = useState("Select");
-  const courseName = "/CoursePage/" + selectedItem + inputValue;
+  const courseUrl = "/CoursePage/" + selectedItem +  "/" + inputValue;
 
   const handleSelect = (eventKey) => {
     setSelectedItem(eventKey);
@@ -186,7 +186,7 @@ const UserInputComponent = () => {
           />
         </Form.Group>
         <Form.Group className="col-auto">
-          <Button className="btn-primary mb-3" onClick={sendDataToFlask} href={courseName}>
+          <Button className="btn-primary mb-3" onClick={sendDataToFlask} href={courseUrl}>
             Search
           </Button>
         </Form.Group>

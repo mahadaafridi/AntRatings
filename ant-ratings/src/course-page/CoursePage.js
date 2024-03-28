@@ -14,6 +14,7 @@ import { interpolateRdYlGn } from 'd3-scale-chromatic';
 
 
 const CoursePage = () => {
+    const dept = useParams()["dept"]
     const courseId = useParams()["courseId"]
 
     const [inputValue, setInputValue] = useState('sadfsads');
@@ -25,7 +26,7 @@ const CoursePage = () => {
     const sendDataToFlask = async () => {
         try {
           const response = await axios.post('http://127.0.0.1:5000/Course/api/data', {
-            courseid: courseId,
+            courseid: dept + courseId,
           });
           console.log('ran sendDataToFlask in user_input.js, data is ' + inputValue + " " + selectedItem);
     
@@ -56,6 +57,7 @@ const CoursePage = () => {
     const hrsColor = colorScale(1 - 1/50)  // REPLACE DIVISOR WITH HRS PER WEEK
     const diffStyle = {backgroundColor: diffColor};
     const hrsStyle = {backgroundColor: hrsColor};
+    const addReviewLink = "/AddReview/" + dept + courseId;
     return (
         <div>
             <div id="ratings">
@@ -75,7 +77,7 @@ const CoursePage = () => {
             </div>
             <div id="reviews-heading">
                 <h2 id="review-h2">Student Reviews</h2>
-                <Button variant="outline-secondary" id="add-review" ><img id="plus-img" src={PlusIcon} alt="Plus icon"></img></Button>
+                <Button variant="outline-secondary" id="add-review" href={addReviewLink}><img id="plus-img" src={PlusIcon} alt="Plus icon"></img></Button>
             </div>
             <hr></hr>
 

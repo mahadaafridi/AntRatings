@@ -75,9 +75,9 @@ export function App() {
               <div className="d-flex justify-content-center">
               <Routes>
                 <Route path="/" element={<UserInputComponent />} />
-                <Route path="/AddReview" element={<AddReview />} />
+                <Route path="/AddReview/:dept/:courseId" element={<AddReview />} />
                 <Route path="/Home" element={<Home />} />
-                <Route path="/CoursePage/:courseId" element={<CoursePage />} />
+                <Route path="/CoursePage/:dept/:courseId" element={<CoursePage />} />
               </Routes>
               </div>
             </Col>
