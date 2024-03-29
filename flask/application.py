@@ -98,6 +98,24 @@ def recieve_course_info_return_course_rev():
                     'all_reviews' : all_reviews})
 
 
+@app.route('/AddReview/Professor/api/data', methods=['POST'])
+def recieve_course_info_return_professors():
+    '''
+    Receives data from front end
+    '''
+
+    data = request.get_json()
+    
+    class_dif = data.get('courseid')
+    department, course_num = _split_course_id(class_dif)
+
+    db = Database()
+    professor_list = db.getProfessors(department, course_num)
+    
+    # issue here 
+    return jsonify({'professors' : professor_list})
+
+
 
 @app.route('/AddReview/api/data', methods=['POST'])
 def receive_review_from_react():

@@ -46,6 +46,20 @@ const AddReview = () => {
       console.error('Error sending data to Flask: ', error);
     }
   };
+
+  const recieveDataFromFlask = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/AddReview/Professor/api/data', {
+        courseid: dept + courseId,
+      });
+    
+    // store these in variables 
+    console.log(response.data); 
+    } catch (error) {
+      console.error('Error sending data to Flask: ', error);
+    }
+  };    
+  recieveDataFromFlask()
     
 
   return (

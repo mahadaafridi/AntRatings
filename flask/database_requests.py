@@ -62,6 +62,17 @@ class Database():
             class_difficulty_value = round(class_difficulty_value / reviews_len, 1)
 
         return str(class_difficulty_value), str(hrs_per_week_val), matching_reviews_list
+    
+    def getProfessors(self, department:str, course_num:str) -> list[str]:
+        """
+        sends in the course and retreives all possible professors that taught the class
+        """
+
+        query = {'course': department + " " + course_num}
+        matching_review = self.database.course_professor.find_one(query)
+        
+
+        return matching_review['professors']
 
     def addReview(self, department: str, course_num: str, difficulty: str, hrs_per_week: str, text: str, professor_name: str) -> bool:
         """
@@ -85,7 +96,7 @@ class Database():
 if __name__ == '__main__':
 
     db = Database()
-    db.getReviews('COMPSCI', '171')
+    db.getProfessors('COMPSCI', '171')
 
 
     

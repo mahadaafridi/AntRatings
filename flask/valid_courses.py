@@ -62,14 +62,33 @@ def insert_class_by_department():
         result = db[collection_name].insert_one(course_id)
         
 
+def insert_course_prof_list():
 
+    response = requests.get("https://api.peterportal.org/rest/v0/instructors/all")
+    course_dict = dict()
+    for professor in response.json():
+        for course in professor['course_history']:
+            if course in course_dict:
+                course_dict[course].add(professor['name'])
+            else:
+                course_dict[course] = {professor['name']} 
     
+    for key, value in course_dict.items():
+        db = client['classes_data']
+        res = {
+            'course' : key,
+            'professors' : list(value)
+        }
+        print(res)
+        result = db.course_professor.insert_one(res)
     
         
 # only running once in order to get data from peter portal to
 # put into Mongo database for future use dna
 if __name__ == "__main__":
+    insert_course_prof_list()
     # insert_class_by_department()
     #insert_valid_departments()
     
+ 
 
