@@ -169,12 +169,14 @@ def _split_course_id(department_and_course: str) -> tuple[str, str]:
     """
     department = ''
     course_id = ''
-    for char in department_and_course:
-        if char.isalpha() and char.isupper():
-            department += char
+    for i in range(len(department_and_course)):
+        if not department_and_course[i].isdigit():
+            department += department_and_course[i]
         else:
-            course_id += char
-    
+            course_id = department_and_course[i:]
+            break
+    print(department)
+    print(course_id)
     return department, course_id    
 
 if __name__ == '__main__':

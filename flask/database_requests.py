@@ -67,7 +67,9 @@ class Database():
         """
         sends in the course and retreives all possible professors that taught the class
         """
-
+        print(department)
+        print(course_num)
+        print(department + " " + course_num)
         query = {'course': department + " " + course_num}
         matching_review = self.database.course_professor.find_one(query)
         

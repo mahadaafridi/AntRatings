@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ const AddReview = () => {
   const [hrsPerWeek, setHrsPerWeek] = useState('');
   const [review, setReview] = useState('');
   const [prof_name, setProfName] = useState('');
+  const [prof_list, setProfList] = useState([]);
 
   const handleButtonDifficulty = (value) => {
     setDifficulty(value);
@@ -27,6 +28,8 @@ const AddReview = () => {
   const handleProfChange = (event) => {
     setProfName(event.target.value);
   };
+
+
     
   const sendDataToFlask = async () => {    
     try {
@@ -54,12 +57,19 @@ const AddReview = () => {
       });
     
     // store these in variables 
-    console.log(response.data); 
+    const responseData = response.data;
+    console.log(responseData)
+    setProfList(responseData['professors'])
+    console.log(prof_list)
     } catch (error) {
       console.error('Error sending data to Flask: ', error);
     }
   };    
-  recieveDataFromFlask()
+
+  // to ensure that the function is only run 1 time when rendering 
+  useEffect(() => {
+    recieveDataFromFlask();
+  }, []);
     
 
   return (
@@ -93,12 +103,17 @@ const AddReview = () => {
             value={review}
             onChange={handleRevChange}
             />
+        
+        {/* dropdown for professors */}
         <p> Professor_name: {prof_name} </p>
-        <textarea
-            id="prof_name_area"
-            value={prof_name}
-            onChange={handleProfChange}
-            />
+        <label>Select a professor:</label>
+        <select value={prof_name} onChange={handleProfChange}>
+          <option value="">Select...</option>
+          {prof_list.map((professor, index) => (
+            <option key={index} value={professor}>{professor}</option>
+          ))}
+        </select>
+
         <button type="submit">Add Review</button>
       </form>
     </div>
