@@ -25,7 +25,6 @@ const CoursePage = () => {
           const response = await axios.post('http://127.0.0.1:5000/Course/api/data', {
             courseid: dept + courseId,
           });
-    
         console.log(response.data); 
         } catch (error) {
           console.error('Error sending data to Flask: ', error);
@@ -79,9 +78,7 @@ const CoursePage = () => {
             <hr></hr>
 
             <div className="reviews">
-                {/* {for (number i = 0; i < reviews.length; )
 
-                } */}
                 {reviews.map((review) => {
                     return (
                     <Card className="card-element" key={review["id"]}>
