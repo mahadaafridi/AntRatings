@@ -93,6 +93,7 @@ def recieve_course_info_return_course_rev():
     db = Database()
     class_difficulty_avg, hrs_per_week_avg, all_reviews = db.getReviews(department, course_num)
     
+    
     # issue here 
     return jsonify({'class_difficulty_avg' : class_difficulty_avg, 'hrs_per_week_avg' : hrs_per_week_avg, 
                     'all_reviews' : all_reviews})

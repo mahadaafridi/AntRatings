@@ -1,3 +1,9 @@
+#spinner {
+    margin-top: 30vh;
+    width: 5rem;
+    height: 5rem;
+}
+
 body {
     font-family: "Raleway", sans-serif;
 }

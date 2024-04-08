@@ -41,14 +41,15 @@ class Database():
     
         for review in matching_reviews:
             class_difficulty_value += review['difficulty']
-            hrs_per_week_val += review['hrs_per_week']
+            hrs_per_week_val += int(review['hrs_per_week'])
             reviews_len += 1  
             #tuple () 
             review_dict = {
             'id' : reviews_len - 1, 
             'department': review['department'],
             'course_num': review['course_num'],
-            'difficulty':   review['difficulty'],
+            'professor_name': review['prof_name'],
+            'difficulty': review['difficulty'],
             'hrs_per_week': review['hrs_per_week'],
             'text': review['text']
             }

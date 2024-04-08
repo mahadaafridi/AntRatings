@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Form } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const AddReview = () => {
   const dept = useParams()["dept"];
@@ -40,8 +41,10 @@ const AddReview = () => {
         courseid: courseId,
         course_department: dept,
         professor_name: prof_name
+        
       });
       console.log('ran sendDataToFlask in user_input.js, data is ' + class_difficulty + " " + hrsPerWeek + " " + review);
+
     } catch (error) {
       console.error('Error sending data to Flask: ', error);
     }
@@ -63,7 +66,6 @@ const AddReview = () => {
   useEffect(() => {
     recieveDataFromFlask();
   }, []);
-
   return (
     <div className="container">
       {/* header with class name */}
@@ -133,8 +135,11 @@ const AddReview = () => {
       </div>
       <div className="row justify-content-center mt-3">
         <div className="col-md-8">
-          <Button type="submit" variant="primary" onClick={sendDataToFlask}>Add Review</Button>
+          <Link to="/CoursePage/COMPSCI/171">
+            <Button type="submit" variant="primary" onClick={sendDataToFlask} >Add Review</Button>
+          </Link>
 
+  
         </div>
       </div>
     </div>
