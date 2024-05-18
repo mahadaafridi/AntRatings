@@ -36,7 +36,7 @@ This project aims to help students at the University of California, Irvine (UCI)
    
 3. **Frontend Setup:**
    ```bash
-   cd ant-rating
+   cd ant-ratings
    npm install
    npm start  
 
